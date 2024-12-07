@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruitment Application - D.AGI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>D.AGI Recruitment Application</h1>
+        </header>
+        <main>
+            <section class="application-form">
+                <h2>Application (First Stage)</h2>
+                <form id="applicationForm" action="thankyou.html" method="GET">
+                    <h3>Section 1: Personal Information</h3>
+                    <label for="nationality">Choose your nationality:</label>
+                    <select id="nationality" required>
+                        <option value="">Select nationality</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="China">China</option>
+                        <option value="USA">USA</option>
+                    </select>
+                    <label for="gender">Choose your gender:</label>
+                    <select id="gender" required>
+                        <option value="">Select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <label for="age">Select your age:</label>
+                    <input type="number" id="age" placeholder="e.g., 25" required>
+                    <label for="faculty">Faculty/Institution:</label>
+                    <input type="text" id="faculty" placeholder="e.g., University/Company Name" required>
+                    <label for="achievements">Achievements and experience:</label>
+                    <textarea id="achievements" placeholder="Describe your skills and achievements" required></textarea>
+                    <label for="contact">Contact Information (Email and Phone):</label>
+                    <input type="email" id="email" placeholder="Your email" required>
+                    <input type="tel" id="phone" placeholder="Your phone number" required>
+                    <label for="intro">Brief introduction about yourself:</label>
+                    <textarea id="intro" placeholder="Tell us about your social interests, hobbies, and life habits" required></textarea>
+
+                    <h3>Application (Second Stage)</h3>
+                    <label for="planA">Plan A: What do you think about the development of Artificial Intelligence in the next 50 years?</label>
+                    <textarea id="planA" placeholder="250 - 4000 words" required></textarea>
+
+                    <label for="planB">Plan B: If you could design an app for students to learn at home, how would you design it?</label>
+                    <textarea id="planB" placeholder="250 - 5000 words" required></textarea>
+
+                    <button type="submit">Submit Application</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        emailjs.init("user_YOUR_USER_ID"); // Replace with your EmailJS User ID
+
+        document.getElementById('applicationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const nationality = document.getElementById('nationality').value;
+            const gender = document.getElementById('gender').value;
+            const age = document.getElementById('age').value;
+            const faculty = document.getElementById('faculty').value;
+            const achievements = document.getElementById('achievements').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const intro = document.getElementById('intro').value;
+            const planA = document.getElementById('planA').value;
+            const planB = document.getElementById('planB').value;
+
+            if (!nationality || !gender || !age || !faculty || !achievements || !email || !phone || !intro || !planA || !planB) {
+                alert("Please fill in all fields before submitting.");
+                return;
+            }
+
+            // Trigger EmailJS to send an email notification
+            emailjs.send("service_YOUR_SERVICE_ID", "template_YOUR_TEMPLATE_ID", {
+                nationality,
+                gender,
+                age,
+                faculty,
+                achievements,
+                email,
+                phone,
+                intro,
+                planA,
+                planB
+            }).then(function(response) {
+                alert("Your application has been submitted and an email notification has been sent.");
+                window.location.href = "thankyou.html"; // Redirect to the thank you page
+            }, function(error) {
+                alert("Failed to send email. Please try again later.");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Applying!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Thank You for Applying to D.AGI</h1>
+        </header>
+        <main>
+            <section class="thank-you-message">
+                <h2>Application Received</h2>
+                <p>Thank you for your interest in joining D.AGI. Your application has been successfully submitted.</p>
+
+                <h3>Next Steps:</h3>
+                <ul>
+                    <li>Step 1: We will review your application and contact you for further steps.</li>
+                    <li>Step 2: Please submit any additional documents (e.g., resume) to support your application.</li>
+                    <li>Step 3: Participate in our interview process if selected.</li>
+                </ul>
+
+                <h3>Contact Information:</h3>
+                <p>If you have any questions, please contact us at <strong>contact@dagi.com</strong>.</p>
+
+                <h3>Additional Requirements:</h3>
+                <form action="submit-documents.html" method="POST">
+                    <label for="resume">Upload your Resume:</label>
+                    <input type="file" id="resume" required>
+
+                    <label for="portfolio">Upload your Portfolio (optional):</label>
+                    <input type="file" id="portfolio">
+
+                    <button type="submit">Submit Documents</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
